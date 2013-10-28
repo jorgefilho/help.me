@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://netshoes.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://netshoes.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://netshoes.com/">
+      <s:element name="GravarCVV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cvv" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GravarCVVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GravarCVVResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarCVV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tokenNS" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperarCVVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperarCVVResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GravarCVVSoapIn">
+    <wsdl:part name="parameters" element="tns:GravarCVV"/>
+  </wsdl:message>
+  <wsdl:message name="GravarCVVSoapOut">
+    <wsdl:part name="parameters" element="tns:GravarCVVResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RecuperarCVVSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperarCVV"/>
+  </wsdl:message>
+  <wsdl:message name="RecuperarCVVSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperarCVVResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="GuardaSeguraCvvSoap">
+    <wsdl:operation name="GravarCVV">
+      <wsdl:input message="tns:GravarCVVSoapIn"/>
+      <wsdl:output message="tns:GravarCVVSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarCVV">
+      <wsdl:input message="tns:RecuperarCVVSoapIn"/>
+      <wsdl:output message="tns:RecuperarCVVSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GuardaSeguraCvvSoap" type="tns:GuardaSeguraCvvSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GravarCVV">
+      <soap:operation soapAction="http://netshoes.com/GravarCVV" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarCVV">
+      <soap:operation soapAction="http://netshoes.com/RecuperarCVV" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GuardaSeguraCvvSoap12" type="tns:GuardaSeguraCvvSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GravarCVV">
+      <soap12:operation soapAction="http://netshoes.com/GravarCVV" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarCVV">
+      <soap12:operation soapAction="http://netshoes.com/RecuperarCVV" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GuardaSeguraCvv">
+    <wsdl:port name="GuardaSeguraCvvSoap" binding="tns:GuardaSeguraCvvSoap">
+      <soap:address location="https://HMG03-ABACOS-AP.abacosns.local:8001/GuardaSeguraCvv.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="GuardaSeguraCvvSoap12" binding="tns:GuardaSeguraCvvSoap12">
+      <soap12:address location="https://HMG03-ABACOS-AP.abacosns.local:8001/GuardaSeguraCvv.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

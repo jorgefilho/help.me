@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<groupId>help-me</groupId>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ws-client</artifactId>
+	<artifactId>generator-ws-client</artifactId>
 	<packaging>jar</packaging>
-	<name>ws-client</name>
+	<name>generator-ws-client</name>
 	<version>1.0.0</version>	
 	<properties>
 		<skipTests>true</skipTests>
@@ -50,15 +50,14 @@
 				<artifactId>jaxws-maven-plugin</artifactId>
 				<executions>
 					<execution>
-
-						<phase>generate-sources</phase>
+						<phase>post-clean</phase>						
 						<goals>
 							<goal>wsimport</goal>
 						</goals>
 						<configuration>
 							<packageName>help.me.ws.client</packageName>
 							<wsdlFiles>
-								<wsdlFile>v1_1.wsdl</wsdlFile>								
+								<wsdlFile>GuardaSeguraCvv.wsdl</wsdlFile>								
 							</wsdlFiles>
 						</configuration>
 					</execution>
